@@ -1,0 +1,22 @@
+[
+    {
+        "id": "5046ccb1-176a-483a-93ed-6f6cd38484dc",
+        "email": "user@email.com",
+        "name": "user",
+        "lastname": "user lastname",
+        "password": "userpass",
+        "roles": [
+            "user"
+        ]
+    },
+    {
+        "email": "jprestrepo346@gmail.com",
+        "name": "Juan Pablo",
+        "lastname": "Restrepo",
+        "password": "pablo",
+        "roles": [
+            "user",
+            "admin"
+        ]
+    }
+]

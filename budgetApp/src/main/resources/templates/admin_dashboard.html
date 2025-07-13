@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+    <title>Admin Dashboard</title>
+</head>
+<body>
+    <header>
+        <h1>Welcome to the Admin Dashboard</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="#user_management">Manage Users</a></li>
+            <li><a href="#bill_management">Manage Bills</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <!-- User Management Section -->
+        <div id="user_management" class="section">
+            <h2 class="section-title">User Management</h2>
+            
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Search users..." id="userSearch">
+                <button class="btn btn-primary">Search</button>
+                <button class="btn btn-secondary">Clear</button>
+            </div>
+
+            <div class="add-button-container">
+                <button class="btn btn-success">Add User</button>
+            </div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Email</th>
+                            <th>Name</th>
+                            <th>Last Name</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>user1@example.com</td>
+                            <td>John</td>
+                            <td>Doe</td>
+                            <td class="action-buttons">
+                                <button class="btn btn-warning">Update</button>
+                                <button class="btn btn-danger">Delete</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>user2@example.com</td>
+                            <td>Jane</td>
+                            <td>Smith</td>
+                            <td class="action-buttons">
+                                <button class="btn btn-warning">Update</button>
+                                <button class="btn btn-danger">Delete</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>user3@example.com</td>
+                            <td>Mike</td>
+                            <td>Johnson</td>
+                            <td class="action-buttons">
+                                <button class="btn btn-warning">Update</button>
+                                <button class="btn btn-danger">Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Bill Management Section -->
+        <div id="bill_management" class="section">
+            <h2 class="section-title">Bill Management</h2>
+            
+            <div class="search-container">
+                <input type="text" class="search-input" placeholder="Search bills..." id="billSearch">
+                <button class="btn btn-primary">Search</button>
+                <button class="btn btn-secondary">Clear</button>
+            </div>
+
+            <div class="add-button-container">
+                <button class="btn btn-success">Add Bill</button>
+            </div>
+
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Bill Type</th>
+                            <th>Bill Name</th>
+                            <th>Value</th>
+                            <th>User Email</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Electricity</td>
+                            <td>Monthly Electric Bill</td>
+                            <td>$120.50</td>
+                            <td>user1@example.com</td>
+                            <td class="action-buttons">
+                                <button class="btn btn-warning">Update</button>
+                                <button class="btn btn-danger">Delete</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Water</td>
+                            <td>Water Service</td>
+                            <td>$45.30</td>
+                            <td>user2@example.com</td>
+                            <td class="action-buttons">
+                                <button class="btn btn-warning">Update</button>
+                                <button class="btn btn-danger">Delete</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Internet</td>
+                            <td>Broadband Service</td>
+                            <td>$89.99</td>
+                            <td>user3@example.com</td>
+                            <td class="action-buttons">
+                                <button class="btn btn-warning">Update</button>
+                                <button class="btn btn-danger">Delete</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Admin Dashboard</p>
+    </footer>
+    <script  th:src="@{/js/script.js}"></script>
+</body>
+</html>
