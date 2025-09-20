@@ -1,13 +1,24 @@
 'use client'
 
 import { useState } from "react";
+import { login } from "@/services/authService";
+import { useRouter } from "next/navigation";
 
 export default function Login() {
+    const router = useRouter();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
     const handleClick = (e) => {
         e.preventDefault();
+        login({email, password}).then(data => {
+            localStorage.setItem("token", data.token)
+            localStorage.setItem("userId", data.user_id)
+            router.push('/')
+
+        }).catch(err => {
+            console.log(err)
+        })
     };
 
     return (

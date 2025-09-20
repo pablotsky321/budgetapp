@@ -1,6 +1,12 @@
+'use client'
+
+import { useAuth } from "@/app/context/AuthContext";
 import Link from "next/link";
 
 export default function Header() {
+
+    const { isAuthenticated } = useAuth();
+
     return (
         <header className="bg-white shadow-lg border-b border-gray-200">
             <div className="container mx-auto px-4 py-4">
@@ -36,25 +42,33 @@ export default function Header() {
                                 >
                                     Bills
                                 </Link>
-                                <Link
-                                    href='/auth/login'
-                                    className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-blue-600 after:transition-all after:duration-300 hover:after:w-full"
-                                >
-                                    Login
-                                </Link>
-                                <Link
-                                    href='/auth/register'
-                                    className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-4 py-2 rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg"
-                                >
-                                    Register
-                                </Link>
+
+                                {isAuthenticated
+                                    ?
+                                    (<>
+                                        <Link
+                                            href='/auth/login'
+                                            className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-blue-600 after:transition-all after:duration-300 hover:after:w-full"
+                                        >
+                                            Login
+                                        </Link>
+                                        <Link
+                                            href='/auth/register'
+                                            className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-4 py-2 rounded-lg hover:from-blue-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg"
+                                        >
+                                            Register
+                                        </Link>
+                                    </>
+                                    ) :
+                                    (
+                                        <button className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-colors duration-200 shadow-md hover:shadow-lg transform hover:scale-105">
+                                            Log out
+                                        </button>
+                                    )
+                                }
                             </li>
                         </ul>
 
-                        {/* Botón de logout */}
-                        <button className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-colors duration-200 shadow-md hover:shadow-lg transform hover:scale-105">
-                            Log out
-                        </button>
                     </nav>
                 </div>
             </div>

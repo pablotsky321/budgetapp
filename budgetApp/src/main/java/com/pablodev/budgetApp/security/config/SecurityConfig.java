@@ -1,4 +1,4 @@
-package com.pablodev.budgetApp.security;
+package com.pablodev.budgetApp.security.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -15,9 +15,13 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
 import com.pablodev.budgetApp.security.filters.JwtFilter;
 import com.pablodev.budgetApp.security.services.UserDetailsServiceImp;
 
+import io.micrometer.common.lang.NonNull;
 import lombok.RequiredArgsConstructor;
 
 @Configuration
@@ -35,6 +39,9 @@ public class SecurityConfig {
         return https
         .csrf(csrf->{
             csrf.disable();
+        })
+        .cors(cors->{
+            cors.disable();
         })
         .sessionManagement(session->{
             session.sessionCreationPolicy(SessionCreationPolicy.STATELESS);

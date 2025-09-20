@@ -69,6 +69,7 @@
           psql --dbname=postgres -c "ALTER USER \"user\" PASSWORD 'postgres';"
           psql --dbname=postgres -c "CREATE DATABASE budgetdb;"
         '';
+        
       };
     };
   };

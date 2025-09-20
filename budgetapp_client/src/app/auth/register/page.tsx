@@ -1,15 +1,24 @@
 'use client'
 
 import { useState } from "react"
+import { register } from "@/services/authService";
+import { useRouter } from "next/navigation";
 
 export default function Register() {
     const [email, setEmail] = useState('');
     const [name, setName] = useState('');
     const [lastname, setLastname] = useState('');
     const [password, setPassword] = useState('');
+    const router = useRouter();
 
     const handleClick = (e) => {
         e.preventDefault();
+        register({name, lastname, email, password}).then(data => {
+            console.log(data);
+            //router.push('/auth/login')
+        }).catch(err => {
+            console.log(err)
+        })
     };
 
     return (

@@ -5,6 +5,7 @@ import java.util.Map;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,30 +19,30 @@ import lombok.RequiredArgsConstructor;
 
 @RestController
 @RequestMapping("/auth")
+@CrossOrigin(origins = "*")
 @RequiredArgsConstructor
 public class AuthController {
-
 
     private final AuthService authService;
 
     @PostMapping("/register")
-    public ResponseEntity<?> register(@RequestBody UserDTO userDTO){
+    public ResponseEntity<?> register(@RequestBody UserDTO userDTO) {
         try {
             return ResponseEntity.ok(authService.register(userDTO));
         } catch (Exception e) {
-            return new ResponseEntity<>(e.getMessage(),HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.BAD_REQUEST);
         }
     }
 
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest){
+    public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest) {
         try {
             HttpHeaders headers = new HttpHeaders();
             Map<String, Object> auth = authService.login(loginRequest);
-            headers.add("Authorization", "Bearer "+auth.get("token"));
+            headers.add("Authorization", "Bearer " + auth.get("token"));
             return ResponseEntity.ok().headers(headers).body(authService.login(loginRequest));
         } catch (ClassNotFoundException e) {
-            return new ResponseEntity<>(e.getMessage(),HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(e.getMessage(), HttpStatus.NOT_FOUND);
         }
     }
 

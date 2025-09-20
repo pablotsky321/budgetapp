@@ -16,7 +16,7 @@ export function AuthProvider({ children }) {
         const storedUserId = localStorage.getItem("userId")
         if(storedToken) setToken(storedToken)
         if(storedUserId) setUserId(storedUserId)
-    },[])
+    },[userId, token])
 
     
     const login = (token: string, userId: string) => {
