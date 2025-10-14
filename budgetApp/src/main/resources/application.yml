@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: budgetApp
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/budgetdb
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+  
+  jpa:
+    hibernate:
+      ddl-auto: none
+
+jwt:
+  secret: 92f175150f3ac4159f90858f356fe9dfd88203f36b6efeb2584ddd737dd1dec7a52d4acd62a55ae69db023e0b87f319d7e4a6f89e16f010203f61b9ca7db1b55
+
+server:
+  port: 8080
+
+
+
+    
