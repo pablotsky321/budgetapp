@@ -14,7 +14,7 @@ export default function Bills() {
     const [bills, setBills] = useState([] as BillDTO[]);
     const [billTypes, setBilltypes] = useState([] as BillTypeDTO[])
     const token = localStorage.getItem("token") as string;
-    const userId = localStorage.getItem("userId") as string; 
+    const userId = localStorage.getItem("userId") as string;
 
     useEffect(()=>{
         fetchBills(userId, token).then((response)=>{
@@ -27,7 +27,7 @@ export default function Bills() {
         }).catch((err)=>{
             alert(err)
         })
-    },[billTypes])
+    },[billTypes, bills])
     
     if (!isAuthenticated) return (
         <div className="min-h-screen flex items-center justify-center py-12 px-4">
@@ -88,7 +88,7 @@ export default function Bills() {
                         </div>
                         Bills
                     </h2>
-                    <Link href='/addBill' className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-4 py-2 rounded-lg font-medium hover:from-blue-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg">
+                    <Link href='/bills/addBill' className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-4 py-2 rounded-lg font-medium hover:from-blue-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg">
                         Add New Bill
                     </Link>
                 </div>

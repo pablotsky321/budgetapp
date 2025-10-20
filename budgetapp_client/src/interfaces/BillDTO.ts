@@ -4,5 +4,5 @@ export interface BillDTO {
   id: string;
   billType: BillTypeDTO;
   billName: string;
-  billValue: string;
+  billValue: number;
 }

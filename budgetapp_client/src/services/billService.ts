@@ -73,3 +73,54 @@ export async function deleteBillType(token: string, id: string){
     const data = await request.text()
     return data
 }
+
+export async function createBill(token:string, billtypeId:string, bill: BillDTO){
+    const request = await fetch(`${baseURL}/bill/create/${billtypeId}`, {
+        headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type":"application/json"
+        },
+        method:'post',
+        body: JSON.stringify(bill)
+    })
+    const data = await request.json()
+    return data as BillTypeDTO[]
+}
+
+export async function fetchBillById(token: string, id:string){
+    const request = await fetch(`${baseURL}/bill/findById/${id}`,{
+        headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type":"application/json"
+        }
+    })
+
+    const data = await request.json()
+    return data as BillDTO
+}
+
+export async function updateBill(token: string, billId:string, billtypeId:string, bill:BillDTO){
+    const request = await fetch(`${baseURL}/bill/update?id=${billId}&billTypeId=${billtypeId}`,{
+        headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type":"application/json"
+        },
+        method:'PUT',
+        body: JSON.stringify(bill)
+    })
+
+    const data = await request.json()
+    return data as BillDTO
+}
+
+export async function deleteBill(token:string, id:string){
+    const request = await fetch(`${baseURL}/bill/delete/${id}`,{
+        headers:{
+            Authorization: `Bearer ${token}`,
+            "Content-Type":"application/json"
+        },
+        method: 'DELETE'
+    })
+    const data = await request.text()
+    return data
+}

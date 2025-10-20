@@ -1,7 +1,13 @@
+'use client'
+
 import { BillDTO } from "@/interfaces/BillDTO";
+import { deleteBill } from "@/services/billService";
 import Link from "next/link";
 
 export default function BillList({data}:{data: BillDTO[]}) {
+
+    const token = localStorage.getItem('token') as string;
+
     return (
         <div className="overflow-hidden">
             {(data == null || data.length == 0) ? (
@@ -80,8 +86,12 @@ export default function BillList({data}:{data: BillDTO[]}) {
                                             <button 
                                                 className="inline-flex items-center px-3 py-1 bg-red-500 text-white text-xs font-medium rounded-md hover:bg-red-600 transition-colors duration-200"
                                                 onClick={() => {
-                                                    // Handle delete logic here
-                                                    console.log('Delete bill:', bill.id);
+                                                    deleteBill(token, bill.id).then((response)=>{
+                                                        alert(response)
+                                                    }).catch((error)=>{
+                                                        alert('Error deleting bill')
+                                                        console.error('Error deleting bill:', error);
+                                                    })
                                                 }}
                                             >
                                                 <svg className="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">

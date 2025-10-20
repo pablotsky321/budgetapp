@@ -69,8 +69,9 @@ public class BillService {
         bill.setBillName(billDTO.getBillName());
         bill.setBillValue(billDTO.getBillValue());
         bill.setBillType(billType);
-        billRepository.save(bill);
+        bill = billRepository.save(bill);
         billDTO.setBillType(billTypeService.createBillTypeDTO(billType));
+        billDTO.setId(bill.getId().toString());
         return billDTO;
     }
 
