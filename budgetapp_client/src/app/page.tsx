@@ -344,7 +344,7 @@ export default function Home() {
           <h3 className="text-xl font-bold text-gray-800 mb-2">No Bill Types Found</h3>
           <p className="text-gray-600 mb-6">Start by creating bill categories to organize your expenses</p>
           <button 
-            onClick={() => window.location.href = '/bills/billType/new'}
+            onClick={() => window.location.href = '/bills/billtypes/addBillType'}
             className="bg-gradient-to-r from-blue-500 to-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:from-blue-600 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 shadow-lg"
           >
             Create Bill Type
